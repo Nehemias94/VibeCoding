@@ -1,36 +1,98 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🍲 Sazón — Recetas del mundo
 
-## Getting Started
+Aplicación web hecha con **Next.js 16 (App Router)**, **TypeScript** y **Tailwind CSS** para buscar recetas de todo el mundo, ver sus ingredientes y preparación, y guardar tus favoritas.
 
-First, run the development server:
+Proyecto desarrollado con la metodología **Vibe Coding**, usando IA como copiloto (ver [VIBE_CODING.md](./VIBE_CODING.md)).
+
+🔗 **Demo en producción:** _pendiente — agregar aquí la URL de Vercel_
+
+## Funcionalidades
+
+- 🔎 Buscador de recetas con resultados en tiempo real
+- 📖 Detalle de cada receta: ingredientes, pasos y video
+- 🗂️ Navegación por categorías
+- ❤️ Favoritos guardados en el navegador (localStorage)
+- 📱 Diseño responsive (móvil y escritorio) con modo oscuro automático
+- ⏳ Pantallas de carga, error y 404 personalizadas
+
+## Rutas
+
+| Ruta | Tipo | Descripción |
+| --- | --- | --- |
+| `/` | Server Component | Inicio con categorías populares |
+| `/recetas` | Server + Client | Buscador (consume `/api/recetas`) |
+| `/recetas/[id]` | Server Component | Detalle de la receta |
+| `/categorias` | Server Component | Lista de categorías |
+| `/categorias/[nombre]` | Server Component | Recetas de una categoría |
+| `/favoritos` | Client Component | Recetas guardadas |
+| `/api/recetas` | Route Handler | `?q=` busca por nombre, `?categoria=` filtra |
+| `/api/categorias` | Route Handler | Lista de categorías |
+
+## Tecnologías
+
+- [Next.js 16](https://nextjs.org) con App Router y Cache Components
+- TypeScript
+- Tailwind CSS v4
+- API externa: [TheMealDB](https://www.themealdb.com/api.php)
+
+## Instalación
+
+Requisitos: Node.js 20 o superior.
 
 ```bash
+# 1. Clonar el repositorio
+git clone https://github.com/Nehemias94/VibeCoding.git
+cd VibeCoding
+
+# 2. Instalar dependencias
+npm install
+
+# 3. Crear las variables de entorno
+cp .env.example .env.local
+
+# 4. Iniciar en modo desarrollo
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abre [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Variables de entorno
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Definidas en `.env.local` (ver `.env.example`):
 
-## Learn More
+| Variable | Descripción | Valor por defecto |
+| --- | --- | --- |
+| `MEALDB_API_URL` | URL base de TheMealDB (solo servidor) | `https://www.themealdb.com/api/json/v1` |
+| `MEALDB_API_KEY` | Clave de la API (solo servidor) | `1` (clave pública de desarrollo) |
+| `NEXT_PUBLIC_APP_NAME` | Nombre visible de la app | `Sazón` |
 
-To learn more about Next.js, take a look at the following resources:
+## Scripts
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run dev     # servidor de desarrollo
+npm run build   # build de producción
+npm run start   # servir el build
+npm run lint    # revisar el código con ESLint
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Despliegue en Vercel
 
-## Deploy on Vercel
+1. Entra a [vercel.com/new](https://vercel.com/new) e importa este repositorio.
+2. En **Environment Variables** agrega las tres variables de la tabla anterior.
+3. Pulsa **Deploy**.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Estructura
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+src/
+├── app/
+│   ├── api/              # Route Handlers (recetas, categorias)
+│   ├── recetas/          # buscador y detalle
+│   ├── categorias/       # lista y detalle de categoría
+│   ├── favoritos/        # recetas guardadas
+│   ├── loading.tsx       # UI de carga
+│   ├── error.tsx         # UI de error
+│   └── not-found.tsx     # página 404
+├── components/           # Navbar, Footer, MealCard, FavoriteButton
+└── lib/                  # cliente de TheMealDB y tipos
+```
