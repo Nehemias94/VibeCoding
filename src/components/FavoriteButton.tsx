@@ -23,6 +23,8 @@ export function FavoriteButton({ meal }: { meal: MealSummary }) {
   // Al montar, revisamos si la receta ya está guardada
   useEffect(() => {
     const saved = getFavorites().some((m) => m.id === meal.id);
+    // localStorage solo existe en el navegador; leerlo aquí evita errores de hidratación
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsFavorite(saved);
   }, [meal.id]);
 

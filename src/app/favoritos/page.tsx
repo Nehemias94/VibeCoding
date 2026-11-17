@@ -12,6 +12,7 @@ export default function FavoritosPage() {
 
   // localStorage solo existe en el navegador, por eso se lee dentro de useEffect
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setFavorites(getFavorites());
     setLoaded(true);
   }, []);
