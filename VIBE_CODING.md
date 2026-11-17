@@ -34,6 +34,7 @@ Cada iteración corresponde a uno o más commits del historial:
 | 8 | Estados | `loading.tsx`, `error.tsx` y `not-found.tsx` |
 | 9 | Validación | `tsc`, `eslint`, `next build` y pruebas de cada ruta |
 | 10 | Documentación | README y este archivo |
+| 11 | Despliegue | Publicación en Vercel con las variables de entorno configuradas en el panel |
 
 ## 3. Decisiones técnicas
 
@@ -66,3 +67,9 @@ npm run build      # build de producción exitoso
 ```
 
 Y se probaron manualmente todas las rutas, incluyendo casos de error (receta inexistente → 404, categoría inexistente → 404).
+
+## 6. Despliegue
+
+La aplicación está publicada en Vercel: https://vibe-coding-henna-sigma.vercel.app/
+
+Después del despliegue se verificó que todas las rutas y los Route Handlers respondieran correctamente en producción.

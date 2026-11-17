@@ -4,7 +4,7 @@ Aplicación web hecha con **Next.js 16 (App Router)**, **TypeScript** y **Tailwi
 
 Proyecto desarrollado con la metodología **Vibe Coding**, usando IA como copiloto (ver [VIBE_CODING.md](./VIBE_CODING.md)).
 
-🔗 **Demo en producción:** _pendiente — agregar aquí la URL de Vercel_
+🔗 **Demo en producción:** https://vibe-coding-henna-sigma.vercel.app/
 
 ## Funcionalidades
 
