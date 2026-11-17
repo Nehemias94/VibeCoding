@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { getFavorites, saveFavorites } from "@/components/FavoriteButton";
-import { MealCard, MealGrid, MealGridSkeleton } from "@/components/MealCard";
+import { Cargando, MealCard, MealGrid } from "@/components/MealCard";
 import type { MealSummary } from "@/lib/types";
 
 export default function FavoritosPage() {
@@ -23,34 +23,30 @@ export default function FavoritosPage() {
   }
 
   return (
-    <div className="space-y-8">
-      <div className="flex flex-wrap items-end justify-between gap-4">
-        <div>
-          <h1 className="font-display text-3xl font-semibold sm:text-4xl">Mis favoritos</h1>
-          <p className="mt-1 text-muted">Las recetas se guardan en este navegador.</p>
-        </div>
-        {favorites.length > 0 && (
-          <button onClick={clearAll} className="text-sm font-medium text-red-600 hover:underline">
-            Borrar todos
-          </button>
-        )}
-      </div>
+    <div>
+      <h1 className="text-3xl font-bold">Mis favoritos</h1>
+      <p className="mb-6 text-gray-500">Las recetas se guardan en este navegador.</p>
 
       {!loaded ? (
-        <MealGridSkeleton count={4} />
+        <Cargando />
       ) : favorites.length === 0 ? (
-        <div className="rounded-2xl border border-dashed border-border p-10 text-center">
-          <p className="text-muted">Aún no tienes recetas favoritas.</p>
-          <Link href="/recetas" className="mt-3 inline-block font-medium text-accent hover:underline">
-            Buscar recetas →
+        <p>
+          Aún no tienes recetas favoritas.{" "}
+          <Link href="/recetas" className="text-orange-600 underline">
+            Buscar recetas
           </Link>
-        </div>
+        </p>
       ) : (
-        <MealGrid>
-          {favorites.map((meal) => (
-            <MealCard key={meal.id} meal={meal} />
-          ))}
-        </MealGrid>
+        <>
+          <button onClick={clearAll} className="mb-4 text-red-600 underline">
+            Borrar todos
+          </button>
+          <MealGrid>
+            {favorites.map((meal) => (
+              <MealCard key={meal.id} meal={meal} />
+            ))}
+          </MealGrid>
+        </>
       )}
     </div>
   );

@@ -9,19 +9,19 @@ export default async function CategoriasPage() {
   const categories = await getCategories();
 
   return (
-    <div className="space-y-8">
-      <h1 className="font-display text-3xl font-semibold sm:text-4xl">Categorías</h1>
-      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+    <div>
+      <h1 className="mb-6 text-3xl font-bold">Categorías</h1>
+      <div className="grid gap-4 md:grid-cols-3">
         {categories.map((cat) => (
           <Link
             key={cat.id}
             href={`/categorias/${cat.name}`}
-            className="flex gap-4 rounded-2xl border border-border bg-surface p-4 transition hover:border-accent"
+            className="flex gap-3 rounded border border-gray-300 bg-white p-3"
           >
-            <Image src={cat.thumbnail} alt={cat.name} width={96} height={60} className="h-fit shrink-0" />
+            <Image src={cat.thumbnail} alt={cat.name} width={96} height={60} className="h-fit" />
             <div>
-              <h2 className="font-display text-lg font-semibold">{cat.name}</h2>
-              <p className="mt-1 line-clamp-2 text-sm text-muted">{cat.description}</p>
+              <h2 className="font-bold">{cat.name}</h2>
+              <p className="line-clamp-2 text-sm text-gray-500">{cat.description}</p>
             </div>
           </Link>
         ))}

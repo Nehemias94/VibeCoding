@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { MealCard, MealGrid, MealGridSkeleton } from "@/components/MealCard";
+import { Cargando, MealCard, MealGrid } from "@/components/MealCard";
 import type { MealSummary } from "@/lib/types";
 
 export function RecipeSearch() {
@@ -36,22 +36,22 @@ export function RecipeSearch() {
   }, [query]);
 
   return (
-    <div className="space-y-6">
+    <div>
       <input
         type="search"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Buscar receta…"
         aria-label="Buscar receta"
-        className="w-full rounded-full border border-border bg-surface px-5 py-3 outline-none focus:border-accent sm:max-w-md"
+        className="mb-6 w-full rounded border border-gray-400 bg-white px-3 py-2 md:w-96"
       />
 
       {loading ? (
-        <MealGridSkeleton />
+        <Cargando />
       ) : error ? (
-        <p role="alert" className="rounded-xl bg-red-50 p-4 text-red-700">{error}</p>
+        <p className="text-red-600">{error}</p>
       ) : meals.length === 0 ? (
-        <p className="text-muted">No encontramos recetas para “{query}”.</p>
+        <p className="text-gray-500">No encontramos recetas para “{query}”.</p>
       ) : (
         <MealGrid>
           {meals.map((meal) => (

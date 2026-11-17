@@ -2,14 +2,10 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <div className="mx-auto max-w-md py-16 text-center">
-      <p className="text-5xl">🥄</p>
-      <h1 className="mt-4 font-display text-2xl font-semibold">No encontramos esa receta</h1>
-      <p className="mt-2 text-muted">La página que buscas no existe o fue movida.</p>
-      <Link
-        href="/"
-        className="mt-6 inline-block rounded-full bg-accent px-6 py-3 font-semibold text-white hover:bg-accent-hover"
-      >
+    <div className="py-10 text-center">
+      <h1 className="text-2xl font-bold">Página no encontrada</h1>
+      <p className="mt-2 text-gray-600">La receta o página que buscas no existe.</p>
+      <Link href="/" className="mt-4 inline-block text-orange-600 underline">
         Volver al inicio
       </Link>
     </div>

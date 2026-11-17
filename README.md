@@ -12,7 +12,7 @@ Proyecto desarrollado con la metodología **Vibe Coding**, usando IA como copilo
 - 📖 Detalle de cada receta: ingredientes, pasos y video
 - 🗂️ Navegación por categorías
 - ❤️ Favoritos guardados en el navegador (localStorage)
-- 📱 Diseño responsive (móvil y escritorio) con modo oscuro automático
+- 📱 Diseño responsive (móvil y escritorio)
 - ⏳ Pantallas de carga, error y 404 personalizadas
 
 ## Rutas

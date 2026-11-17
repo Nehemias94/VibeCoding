@@ -43,13 +43,9 @@ export function FavoriteButton({ meal }: { meal: MealSummary }) {
     <button
       type="button"
       onClick={toggle}
-      className={`rounded-full px-5 py-2.5 text-sm font-semibold transition-colors ${
-        isFavorite
-          ? "bg-accent text-white hover:bg-accent-hover"
-          : "border border-border bg-surface hover:border-accent hover:text-accent"
-      }`}
+      className="rounded bg-orange-600 px-4 py-2 text-white"
     >
-      {isFavorite ? "♥ En favoritos" : "♡ Guardar en favoritos"}
+      {isFavorite ? "Quitar de favoritos" : "Agregar a favoritos"}
     </button>
   );
 }

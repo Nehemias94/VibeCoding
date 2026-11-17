@@ -1,15 +1,10 @@
 export function Footer() {
   return (
-    <footer className="border-t border-border">
-      <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-6 text-sm text-muted sm:flex-row sm:items-center sm:justify-between sm:px-6">
-        <p>Hecho con Next.js 16 y Vibe Coding.</p>
-        <p>
-          Datos de{" "}
-          <a href="https://www.themealdb.com" target="_blank" rel="noreferrer" className="underline hover:text-accent">
-            TheMealDB
-          </a>
-        </p>
-      </div>
+    <footer className="border-t border-gray-300 py-4 text-center text-sm text-gray-500">
+      Proyecto hecho con Next.js · Datos de{" "}
+      <a href="https://www.themealdb.com" target="_blank" rel="noreferrer" className="underline">
+        TheMealDB
+      </a>
     </footer>
   );
 }

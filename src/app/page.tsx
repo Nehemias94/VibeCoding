@@ -7,42 +7,31 @@ export default async function Home() {
   const categories = await getCategories();
 
   return (
-    <div className="space-y-14">
-      <section className="rounded-3xl bg-accent-soft px-6 py-14 text-center sm:px-12">
-        <h1 className="font-display text-4xl font-semibold sm:text-5xl">
-          Recetas del mundo, <span className="text-accent">a tu manera</span>
-        </h1>
-        <p className="mx-auto mt-4 max-w-xl text-muted">
-          Busca platillos de todo el mundo, revisa sus ingredientes paso a paso y guarda tus favoritos.
-        </p>
-        <Link
-          href="/recetas"
-          className="mt-8 inline-block rounded-full bg-accent px-6 py-3 font-semibold text-white hover:bg-accent-hover"
-        >
-          Buscar recetas
-        </Link>
-      </section>
+    <div>
+      <h1 className="text-3xl font-bold">Bienvenido a Sazón</h1>
+      <p className="mt-2 text-gray-600">
+        Aquí puedes buscar recetas de todo el mundo, ver sus ingredientes y guardar tus favoritas.
+      </p>
+      <Link href="/recetas" className="mt-4 inline-block rounded bg-orange-600 px-4 py-2 text-white">
+        Buscar recetas
+      </Link>
 
-      <section>
-        <div className="mb-5 flex items-end justify-between">
-          <h2 className="font-display text-2xl font-semibold">Categorías populares</h2>
-          <Link href="/categorias" className="text-sm font-medium text-accent hover:underline">
-            Ver todas →
+      <h2 className="mt-10 mb-4 text-2xl font-bold">Categorías</h2>
+      <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+        {categories.slice(0, 8).map((cat) => (
+          <Link
+            key={cat.id}
+            href={`/categorias/${cat.name}`}
+            className="rounded border border-gray-300 bg-white p-3 text-center"
+          >
+            <Image src={cat.thumbnail} alt={cat.name} width={120} height={75} className="mx-auto" />
+            <p className="mt-2">{cat.name}</p>
           </Link>
-        </div>
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-          {categories.slice(0, 8).map((cat) => (
-            <Link
-              key={cat.id}
-              href={`/categorias/${cat.name}`}
-              className="flex flex-col items-center rounded-2xl border border-border bg-surface p-4 transition hover:border-accent"
-            >
-              <Image src={cat.thumbnail} alt={cat.name} width={120} height={75} />
-              <span className="mt-2 font-medium">{cat.name}</span>
-            </Link>
-          ))}
-        </div>
-      </section>
+        ))}
+      </div>
+      <Link href="/categorias" className="mt-4 inline-block text-orange-600 underline">
+        Ver todas las categorías
+      </Link>
     </div>
   );
 }
