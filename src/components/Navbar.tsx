@@ -9,7 +9,6 @@ const LINKS = [
   { href: "/recetas", label: "Recetas" },
   { href: "/categorias", label: "Categorías" },
   { href: "/favoritos", label: "Favoritos" },
-  { href: "/acerca", label: "Acerca" },
 ] as const;
 
 const appName = process.env.NEXT_PUBLIC_APP_NAME ?? "Sazón";
