@@ -138,10 +138,3 @@ export async function getMealsByCategory(category: string): Promise<MealSummary[
   );
   return (data.meals ?? []).map((m) => ({ ...toSummary(m), category }));
 }
-
-/** Receta aleatoria. NO se cachea: debe ser distinta en cada petición. */
-export async function getRandomMeal(): Promise<Meal> {
-  const data = await request<{ meals: RawMeal[] | null }>("random.php");
-  if (!data.meals?.[0]) throw new MealDbError("TheMealDB no devolvió ninguna receta");
-  return toMeal(data.meals[0]);
-}
